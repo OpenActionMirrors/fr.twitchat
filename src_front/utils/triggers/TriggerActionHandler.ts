@@ -2529,7 +2529,7 @@ export default class TriggerActionHandler {
 			}
 		}
 
-		const log: LogTrigger = {
+		let log: LogTrigger = {
 			date: Date.now(),
 			id: Utils.getUUID(),
 			trigger,
@@ -2580,7 +2580,8 @@ export default class TriggerActionHandler {
 			TriggerTypes.TWITCHAT_LIVE_FRIENDS,
 			TriggerTypes.TWITCHAT_MESSAGE,
 		];
-		if (!noLogs.includes(trigger.type)) Logger.instance.log("triggers", log);
+		if (!noLogs.includes(trigger.type))
+			log = Logger.instance.log("triggers", log) as LogTrigger;
 
 		//Special case for friends stream start/stop notifications
 		if (trigger.type == TriggerTypes.TWITCHAT_LIVE_FRIENDS) {
@@ -4683,6 +4684,39 @@ export default class TriggerActionHandler {
 										'". New State is: ' +
 										trigger.enabled,
 								});
+							}
+						} else {
+							const entry = TriggerUtils.getFlatFolderList().find(
+								(v) => v.id == step.triggerId,
+							);
+							logStep.messages.push({
+								date: Date.now(),
+								value: `Search for trigger folder ID "${step.triggerId}"`,
+							});
+							if (entry) {
+								switch (step.action) {
+									case "enable":
+										entry.enabled = true;
+										break;
+									case "disable":
+										entry.enabled = false;
+										break;
+									case "toggle":
+										entry.enabled = !entry.enabled;
+										break;
+								}
+								sTriggers.computeTriggerTreeEnabledStates();
+								logStep.messages.push({
+									date: Date.now(),
+									value: `${step.action} folder "${step.triggerId}". New State is: ${entry.enabled}`,
+								});
+							} else {
+								logStep.messages.push({
+									date: Date.now(),
+									value: `❌ No trigger and no folder found with ID "${step.triggerId}"`,
+								});
+								log.error = true;
+								logStep.error = true;
 							}
 						}
 					}
