@@ -738,6 +738,9 @@ function openEmoteSelector(event: MouseEvent): void {
 	props.triggerData.icon = "";
 	showEmoteSelector.value = true;
 	emoteSelectorOrigin.value = { x: event.clientX, y: event.clientY };
+	nextTick(() => {
+		replaceEmoteSelector();
+	});
 }
 
 /**
