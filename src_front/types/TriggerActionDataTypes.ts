@@ -483,7 +483,7 @@ export interface TriggerTypeDefinition extends TwitchatDataTypes.ParameterDataLi
 	testMessageType?: TwitchatDataTypes.TwitchatMessageStringType;
 	testNoticeType?: TwitchatDataTypes.TwitchatNoticeStringType;
 	goxlrMiniCompatible?: boolean;
-	private?: boolean;
+	featureFlag?: TwitchatDataTypes.FeatureFlag;
 	newDate?: number;
 }
 
@@ -7986,7 +7986,7 @@ export function TriggerTypesDefinitionList(): TriggerTypeDefinition[] {
 			value: TriggerTypes.USER_JOIN,
 			descriptionKey: "triggers.events.USER_JOIN.description",
 			testMessageType: TwitchatDataTypes.TwitchatMessageType.JOIN,
-			private: true,
+			featureFlag: "join_leave_triggers",
 		},
 		{
 			category: TriggerEventTypeCategories.USER,
@@ -7995,7 +7995,7 @@ export function TriggerTypesDefinitionList(): TriggerTypeDefinition[] {
 			value: TriggerTypes.USER_LEAVE,
 			descriptionKey: "triggers.events.USER_LEAVE.description",
 			testMessageType: TwitchatDataTypes.TwitchatMessageType.LEAVE,
-			private: true,
+			featureFlag: "join_leave_triggers",
 		},
 
 		{
@@ -8160,6 +8160,7 @@ export function TriggerTypesDefinitionList(): TriggerTypeDefinition[] {
 			labelKey: "triggers.events.BINGO_GRID_VIEWER_LINE.label",
 			value: TriggerTypes.BINGO_GRID_VIEWER_LINE,
 			descriptionKey: "triggers.events.BINGO_GRID_VIEWER_LINE.description",
+			featureFlag: "bingo_grid",
 			testMessageType: TwitchatDataTypes.TwitchatMessageType.BINGO_GRID_VIEWER,
 		},
 		{
@@ -8169,6 +8170,7 @@ export function TriggerTypesDefinitionList(): TriggerTypeDefinition[] {
 			labelKey: "triggers.events.BINGO_GRID_LINE.label",
 			value: TriggerTypes.BINGO_GRID_LINE,
 			descriptionKey: "triggers.events.BINGO_GRID_LINE.description",
+			featureFlag: "bingo_grid",
 			testMessageType: TwitchatDataTypes.TwitchatMessageType.BINGO_GRID,
 		},
 		{
@@ -8178,6 +8180,7 @@ export function TriggerTypesDefinitionList(): TriggerTypeDefinition[] {
 			labelKey: "triggers.events.BINGO_GRID_ALL.label",
 			value: TriggerTypes.BINGO_GRID_ALL,
 			descriptionKey: "triggers.events.BINGO_GRID_ALL.description",
+			featureFlag: "bingo_grid",
 			testMessageType: TwitchatDataTypes.TwitchatMessageType.BINGO_GRID,
 		},
 		{
@@ -8187,6 +8190,7 @@ export function TriggerTypesDefinitionList(): TriggerTypeDefinition[] {
 			labelKey: "triggers.events.BINGO_GRID_CELL.label",
 			value: TriggerTypes.BINGO_GRID_CELL,
 			descriptionKey: "triggers.events.BINGO_GRID_CELL.description",
+			featureFlag: "bingo_grid",
 			testMessageType: TwitchatDataTypes.TwitchatMessageType.BINGO_GRID,
 		},
 		{
@@ -8196,6 +8200,7 @@ export function TriggerTypesDefinitionList(): TriggerTypeDefinition[] {
 			labelKey: "triggers.events.BINGO_GRID_RESET.label",
 			value: TriggerTypes.BINGO_GRID_RESET,
 			descriptionKey: "triggers.events.BINGO_GRID_RESET.description",
+			featureFlag: "bingo_grid",
 			testMessageType: TwitchatDataTypes.TwitchatMessageType.BINGO_GRID,
 		},
 		{
@@ -8205,6 +8210,7 @@ export function TriggerTypesDefinitionList(): TriggerTypeDefinition[] {
 			labelKey: "triggers.events.QUIZ_COMPLETE.label",
 			value: TriggerTypes.QUIZ_COMPLETE,
 			descriptionKey: "triggers.events.QUIZ_COMPLETE.description",
+			featureFlag: "quiz",
 			testMessageType: TwitchatDataTypes.TwitchatMessageType.QUIZ_COMPLETE,
 		},
 

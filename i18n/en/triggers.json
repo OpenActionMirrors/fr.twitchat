@@ -1328,7 +1328,7 @@
 			},
 			"SCHEDULE": {
 				"label": "Scheduled actions",
-				"search_extra": ["repeat", "regular", "schedule"],
+				"search_terms": ["repeat", "regular", "schedule"],
 				"description": "Actions to execute regularly or at specific date/time"
 			},
 			"TIMER_START": {
